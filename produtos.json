@@ -1,0 +1,42 @@
+[
+    {
+        "cod": 1,
+        "Produto": "Teclado",
+        "Valor": 65.1
+    },
+    {
+        "cod": 2,
+        "Produto": "Monitor",
+        "Valor": 200
+    },
+    {
+        "cod": 3,
+        "Produto": "Mouse",
+        "Valor": 50
+    },
+    {
+        "cod": 4,
+        "Produto": "Notebook",
+        "Valor": 3000
+    },
+    {
+        "cod": 4,
+        "Produto": "Placa Video G-Force",
+        "Valor": 500
+    },
+    {
+        "cod": 6,
+        "Produto": "Projetor Holográfico",
+        "Valor": 6000
+    },
+    {
+        "cod": 7,
+        "Produto": "Caixa de Som",
+        "Valor": 150
+    },
+    {
+        "cod": 9,
+        "Produto": "Pen Drive 32Gb",
+        "Valor": 45
+    }
+]
