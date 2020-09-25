@@ -35,8 +35,38 @@
         "Valor": 150
     },
     {
-        "cod": 9,
+        "cod": 180,
         "Produto": "Pen Drive 32Gb",
         "Valor": 45
+    },
+    {
+        "cod": 9,
+        "Produto": "HD 1TB",
+        "Valor": 500
+    },
+    {
+        "cod": 173,
+        "Produto": "Suporte para Monitor",
+        "Valor": 399
+    },
+    {
+        "cod": 145,
+        "Produto": "Pc Gamer G-fire AMD",
+        "Valor": 2.534
+    },
+    {
+        "cod": 212,
+        "Produto": "MacBook Pro",
+        "Valor": 13
+    },
+    {
+        "cod": 194,
+        "Produto": "MacBook Pro",
+        "Valor": "R$ 13,000.00"
+    },
+    {
+        "cod": 66,
+        "Produto": "TABLET PC",
+        "Valor": "R$ 2,000.00"
     }
 ]

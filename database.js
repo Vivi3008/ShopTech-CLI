@@ -1,4 +1,9 @@
-const { writeFileSync, readFileSync } = require('fs')
+const { writeFile, readFile } = require('fs')
+const { promisify } = require('util')
+const [writeFileAsync, readFileAsync] = [
+  promisify(writeFile),
+  promisify(readFile),
+]
 
 class Database {
     constructor(){
@@ -7,23 +12,29 @@ class Database {
 
     //pegar dados do arquivo
     async readFile(){
-        const doc = await readFileSync(this.arquivo, 'utf-8')
+        const doc = await readFileAsync(this.arquivo, 'utf-8')
         return JSON.parse(doc.toString())
     }
 
     async writeFile(data){
-        await writeFileSync(this.arquivo, JSON.stringify(data))
+        await writeFileAsync(this.arquivo, JSON.stringify(data))
         return true
     }
 
     async addData(product){
         const doc = await this.readFile()
 
-        const prodFinal = [
-            ...doc,
-            product
-        ]
-         return await this.writeFile(prodFinal)  
+        const cod = Math.floor(Math.random()*250)
+
+        const Valor = (product.Valor).toLocaleString('pt-br', { style: 'currency', currency : 'BRL'})
+        const Produto = (product.Produto).toUpperCase()
+
+        const prodCod = { cod, Produto, Valor }
+
+        const prodFinal = [ ...doc, prodCod ]
+
+        return await this.writeFile(prodFinal)  
+        
     }
 
     async removeData(cod){
@@ -49,27 +60,31 @@ class Database {
         return dataFilter   
     }
 
+    async update(cod, product){
+        const data = await this.readFile()
+
+        const productUpdate = data.filter( item => item.cod === cod)
+
+
+        const prodActual = Object.assign(...productUpdate, product)
+
+        //retorna o indice do array a ser alterado
+        const index = data.findIndex( item => item.cod === parseInt(cod))
+
+        if (!index) throw Error('O produto informado nao existe!');
+
+        data.splice(index, 1)
+
+        const prodFinal = [
+            ...data,
+            prodActual
+        ]
+
+        return await this.writeFile(prodFinal)
+        
+    }
+
 }
 
+module.exports = new Database()
 
-const escrever = new Database
-
-const dados = {
-    cod: Math.floor(Math.random()*250),
-    Produto: "Pen Drive 32Gb",
-    Valor: 45
-}
-
-async function show(){
-    const prodAdd = await escrever.showData()
-    console.table(prodAdd)    
-}
-
-async function add(dados){
-    const add = await escrever.writeFile(dados)
-    const result = add ? console.log("Adicionado com sucesso!") : console.log("Erro ao adicionar")
-    return result
-}
-
-add(dados)
-/* console.table(escrever.showData()) */
