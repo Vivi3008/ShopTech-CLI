@@ -1,10 +1,12 @@
 
 const Database = require('./database')
+const Compras = require('./compras')
+const { compra } = require('./compras')
 
 
 const dados = {
-    Produto: "Tablet Pc",
-    Valor: 2000
+    Produto: "teclado gamer membrana",
+    Valor: 180
 }
 
 async function show(cod){
@@ -30,4 +32,28 @@ async function update(cod, data){
     return response
 }
 
-add(dados)
+
+//testes compras
+
+
+async function comprar(cod){
+    const result = await Compras.addCarrinho(cod)
+    return result ? console.log('Produto adicionado ao carrinho!') : console.log('Erro ao adicionar produto no carrinho!')
+}
+
+async function remover(cod){
+    const result = await Compras.RemoverItem(cod)
+    return result ? console.log('Item deletado!') : console.log('Erro ao deletar item!')
+}
+
+async function mostrar(){
+    const result = await Compras.mostrarCarrinho()
+    console.table(result)
+}
+
+async function finalizar(){
+    const result = await Compras.FinalizarCompra()
+    return result
+}
+
+comprar(66)

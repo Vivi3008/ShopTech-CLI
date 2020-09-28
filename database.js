@@ -1,9 +1,5 @@
-const { writeFile, readFile } = require('fs')
-const { promisify } = require('util')
-const [writeFileAsync, readFileAsync] = [
-  promisify(writeFile),
-  promisify(readFile),
-]
+const { writeFileSync, readFileSync } = require('fs')
+
 
 class Database {
     constructor(){
@@ -12,12 +8,12 @@ class Database {
 
     //pegar dados do arquivo
     async readFile(){
-        const doc = await readFileAsync(this.arquivo, 'utf-8')
+        const doc = await readFileSync(this.arquivo, 'utf-8')
         return JSON.parse(doc.toString())
     }
 
     async writeFile(data){
-        await writeFileAsync(this.arquivo, JSON.stringify(data))
+        await writeFileSync(this.arquivo, JSON.stringify(data))
         return true
     }
 
@@ -26,7 +22,7 @@ class Database {
 
         const cod = Math.floor(Math.random()*250)
 
-        const Valor = (product.Valor).toLocaleString('pt-br', { style: 'currency', currency : 'BRL'})
+        const Valor = ((product.Valor).toLocaleString('pt-br', { style: 'currency', currency : 'BRL'}))
         const Produto = (product.Produto).toUpperCase()
 
         const prodCod = { cod, Produto, Valor }
@@ -45,7 +41,7 @@ class Database {
 
         const index = doc.findIndex(index => index.cod === cod)
 
-        if(!index) throw Error("O codigo não existe!");
+        if(index===-1) throw Error("O codigo não existe!");
 
         const dadoRemovido = doc.filter( item => item.cod !== cod)
 
