@@ -1,0 +1,32 @@
+[
+    {
+        "cod": 54,
+        "Produto": "MEMORIA RAM 16GB",
+        "Valor": 200
+    },
+    {
+        "cod": 18,
+        "Produto": "MACBOOK PRO I7",
+        "Valor": 13000
+    },
+    {
+        "cod": 105,
+        "Produto": "SUPORTE PARA MONITOR",
+        "Valor": 199
+    },
+    {
+        "cod": 84,
+        "Produto": "TECLADO MEMBRANA",
+        "Valor": 99
+    },
+    {
+        "cod": 105,
+        "Produto": "MONITOR AOC 72DP",
+        "Valor": 80
+    },
+    {
+        "cod": 30,
+        "Produto": "MOUSE WIRELESS MICROSOFT",
+        "Valor": 100
+    }
+]

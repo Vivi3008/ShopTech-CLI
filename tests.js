@@ -1,14 +1,15 @@
 
 const Database = require('./database')
 const Compras = require('./compras')
-const { compra } = require('./compras')
+
 
 
 const dados = {
-    Produto: "teclado gamer membrana",
-    Valor: 180
+    Produto: "Mouse wireless microsoft",
+    Valor: 100
 }
 
+//manipular o database
 async function show(cod){
     const prodAdd = await Database.showData(cod)
     console.table(prodAdd)    
@@ -56,4 +57,6 @@ async function finalizar(){
     return result
 }
 
-comprar(66)
+
+comprar(105)
+

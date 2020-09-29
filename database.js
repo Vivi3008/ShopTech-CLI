@@ -1,19 +1,25 @@
-const { writeFileSync, readFileSync } = require('fs')
+const { writeFile, readFile } = require('fs')
+const { promisify } = require('util')
+const [writeFileAsync, readFileAsync] = [
+  promisify(writeFile),
+  promisify(readFile),
+]
+
 
 
 class Database {
     constructor(){
-        this.arquivo = 'produtos.json'
+        this.arquivo = 'products.json'
     }
 
     //pegar dados do arquivo
     async readFile(){
-        const doc = await readFileSync(this.arquivo, 'utf-8')
+        const doc = await readFileAsync(this.arquivo)
         return JSON.parse(doc.toString())
     }
 
     async writeFile(data){
-        await writeFileSync(this.arquivo, JSON.stringify(data))
+        await writeFileAsync(this.arquivo, JSON.stringify(data))
         return true
     }
 
@@ -22,7 +28,7 @@ class Database {
 
         const cod = Math.floor(Math.random()*250)
 
-        const Valor = ((product.Valor).toLocaleString('pt-br', { style: 'currency', currency : 'BRL'}))
+        const Valor = parseFloat(product.Valor)
         const Produto = (product.Produto).toUpperCase()
 
         const prodCod = { cod, Produto, Valor }

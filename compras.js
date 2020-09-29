@@ -1,30 +1,33 @@
-const { readFileSync, writeFileSync } = require('fs')
-
-
+const { writeFile, readFile } = require('fs')
+const { promisify } = require('util')
+const [writeFileAsync, readFileAsync] = [
+  promisify(writeFile),
+  promisify(readFile),
+]
 
 class Compras{
     constructor(){
-        this.arquivo = 'produtos.json'
+        this.arquivo = 'products.json'
         this.compra = 'compra.json'
     }
 
-    async readFileProduto(){
-        const doc = await readFileSync(this.arquivo, 'utf-8')
-        return JSON.parse(doc.toString())
-    }
+    readFileProducts(){
+       const produtos = require('./products.json')
+       return produtos.toString()
+   }
 
     async readFileCompra(){
-        const compras = await readFileSync(this.compra, 'utf-8')
+        const compras = await readFileAsync(this.compra, 'utf-8')
         return JSON.parse(compras.toString())
     }
 
     async writeFile(dados){
-         await writeFileSync(this.compra, JSON.stringify(dados))
+         await writeFileAsync(this.compra, JSON.stringify(dados))
          return true
     }
 
     async addCarrinho(id){
-         const produtos = await this.readFileProduto()
+         const produtos = this.readFileProducts()
         const compras = await this.readFileCompra()
 
         console.log(produtos)
