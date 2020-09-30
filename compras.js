@@ -11,13 +11,18 @@ class Compras{
         this.compra = 'compra.json'
     }
 
-    readFileProducts(){
-       const produtos = require('./products.json')
-       return produtos.toString()
-   }
+    async readFileProducts(){
+        try {
+            const doc = await readFileAsync(this.arquivo)
+            return JSON.parse(doc.toString())
+            
+        } catch (error) {
+           console.log('Erro!', error) 
+        }
+    }
 
     async readFileCompra(){
-        const compras = await readFileAsync(this.compra, 'utf-8')
+        const compras = await readFileAsync(this.compra)
         return JSON.parse(compras.toString())
     }
 
@@ -27,16 +32,16 @@ class Compras{
     }
 
     async addCarrinho(id){
-         const produtos = this.readFileProducts()
+        const produtos = await this.readFileProducts()
         const compras = await this.readFileCompra()
 
-        console.log(produtos)
-       /*  const Produto = produtos.filter(item => item.cod === id)
+       
+        const produtoAdicionado = produtos.filter(item => item.cod === id)
 
         let objFinal = {}
 
         //extrair o objeto do array Produto
-        Produto.forEach(item => {
+        produtoAdicionado.forEach(item => {
             for (var i in item){
                 objFinal[i] = item[i]
             }
@@ -44,7 +49,7 @@ class Compras{
         
         const compraFinal = [ ...compras, objFinal ]
        
-        return await this.writeFile(compraFinal)   */
+        return await this.writeFile(compraFinal)   
     }
 
     async RemoverItem(id){
@@ -74,13 +79,13 @@ class Compras{
         const compras = await this.readFileCompra()
 
         try {
-            if(compras === " ") throw Error('Carrinho Vazio!')
+            if (compras === " ") throw Error('Carrinho Vazio!')
 
             const valor = compras.map( item => item.Valor)
 
             const total = valor.reduce( (total, next) => total + next)
             
-            console.log(total)
+            return total
 
         } catch (error) {
             console.error('Erro ao finalizar compra! ', error)

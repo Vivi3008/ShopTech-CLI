@@ -5,8 +5,8 @@ const Compras = require('./compras')
 
 
 const dados = {
-    Produto: "Mouse wireless microsoft",
-    Valor: 100
+    Produto: "capa para notebook",
+    Valor: 50
 }
 
 //manipular o database
@@ -33,7 +33,6 @@ async function update(cod, data){
     return response
 }
 
-
 //testes compras
 
 
@@ -57,6 +56,7 @@ async function finalizar(){
     return result
 }
 
+finalizar()
 
-comprar(105)
+
 

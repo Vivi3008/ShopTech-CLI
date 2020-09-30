@@ -28,5 +28,15 @@
         "cod": 30,
         "Produto": "MOUSE WIRELESS MICROSOFT",
         "Valor": 100
+    },
+    {
+        "cod": 59,
+        "Produto": "CAPA PARA NOTEBOOK",
+        "Valor": 50
+    },
+    {
+        "cod": 11,
+        "Produto": "CAPA PARA NOTEBOOK",
+        "Valor": 50
     }
 ]
