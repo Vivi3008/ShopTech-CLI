@@ -38,23 +38,24 @@ class Compras {
 
         const index = produtos.findIndex(item => item.cod === id)
 
-        if (index === -1) throw Error('Codigo do produto inexistente!')
+        if (index === -1) {
+            return false
+        } else {
+            const produtoAdicionado = produtos.filter(item => item.cod === id)
 
-        const produtoAdicionado = produtos.filter(item => item.cod === id)
+            let objFinal = {}
 
-        let objFinal = {}
-
-         //extrair o objeto do array Produto
-         produtoAdicionado.forEach(item => {
+            //extrair o objeto do array Produto
+            produtoAdicionado.forEach(item => {
                 for (var i in item) {
                     objFinal[i] = item[i]
                 }
             })
 
-        const compraFinal = [...compras, objFinal]
+            const compraFinal = [...compras, objFinal]
 
-        return await this.writeFile(compraFinal)
-      
+            return await this.writeFile(compraFinal)
+        }
     }
 
     async RemoverItem(id) {
@@ -62,17 +63,15 @@ class Compras {
 
         const index = compra.findIndex(item => item.cod === id)
 
-        try {
-            if (index === -1) throw Error('O codigo do produto nao existe')
+        if (index === -1) {
+            return false
+        }
 
+        else {
             const produtosComDadoRemovido = compra.filter(item => item.cod !== id)
 
             return await this.writeFile(produtosComDadoRemovido)
-
-        } catch (error) {
-            console.error('Erro ao deletar! ', error)
         }
-
     }
 
     async mostrarCarrinho() {
@@ -83,19 +82,18 @@ class Compras {
     async FinalizarCompra() {
         const compras = await this.readFileCompra()
 
-        if (compras === []){
-            const valor = compras.map(item => item.Valor)
+        if (compras.length === 0) {
+            return 0
+        }
+        else {
+            const valor = compras.map(item => parseInt(item.Valor))
 
             const total = valor.reduce((total, next) => total + next)
 
-            await this.writeFile([]) 
+            await this.writeFile([])
 
             return total
         }
-          else {
-            const vazio = 0
-            return vazio
-          }
 
     }
 

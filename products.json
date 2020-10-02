@@ -1,42 +1,44 @@
 [
     {
         "cod": 54,
-        "Produto": "MEMORIA RAM 16GB",
+        "Produto": "Ipad Air",
         "Valor": 200
     },
     {
         "cod": 18,
-        "Produto": "MACBOOK PRO I7",
-        "Valor": 13000
+        "Produto": "Google glass",
+        "Valor": 1300
     },
     {
         "cod": 105,
-        "Produto": "SUPORTE PARA MONITOR",
+        "Produto": "Base para Notebook C3Tech NBC-50",
         "Valor": 199
     },
     {
         "cod": 84,
-        "Produto": "TECLADO MEMBRANA",
+        "Produto": "Fone multimídia, Fortrek",
         "Valor": 99
     },
     {
-        "cod": 105,
-        "Produto": "MONITOR AOC 72DP",
+        "cod": 10,
+        "Produto": "Cartão de memória SanDisk 16 GB, a prova d'água",
         "Valor": 80
     },
     {
         "cod": 30,
-        "Produto": "MOUSE WIRELESS MICROSOFT",
+        "Produto": "Mouse sem Fio 2.4 GHz 1.200 DPI USB, Multilaser",
         "Valor": 100
     },
     {
         "cod": 59,
-        "Produto": "CAPA PARA NOTEBOOK",
-        "Valor": 50
+        "Produto": "Notebook VAIO FE14, Intel Core i3",
+        "Valor": 2969
     },
     {
-        "cod": 11,
-        "Produto": "CAPA PARA NOTEBOOK",
-        "Valor": 50
+        "cod": 45,
+        "Produto": "Suporte para Monitor e Notebook",
+        "Valor": 47.90
+        
     }
+  
 ]
