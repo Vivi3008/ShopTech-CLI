@@ -6,10 +6,9 @@ const [writeFileAsync, readFileAsync] = [
 ]
 
 
-
 class Database {
     constructor(){
-        this.arquivo = 'products.json'
+        this.arquivo = './data/products.json'
     }
 
     //pegar dados do arquivo

@@ -3,7 +3,6 @@
 Command Line Interface que simula um sistema de compras básico de produtos Tech. Feito em NodeJs :heart:.
 
   
-
 ## Tecnologias utilizadas
 
 * [CommanderJs](https://github.com/tj/commander.js/) - Facilita a criação de comandos e manipulação de flags e options

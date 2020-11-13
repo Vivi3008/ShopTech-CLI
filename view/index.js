@@ -1,9 +1,9 @@
 const program = require('commander')
-const package = require('./package.json')
-const produtos = require('./data/products.json')
+const package = require('../package.json')
+const produtos = require('../data/products.json')
 const chalk = require('chalk');
 let inquirer = require('inquirer')
-const carrinho = require('./controller/compras')
+const carrinho = require('../controller/compras')
 const figlet = require('figlet')
 const Table = require('cli-table')
 

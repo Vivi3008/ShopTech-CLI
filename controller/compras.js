@@ -7,8 +7,8 @@ const [writeFileAsync, readFileAsync] = [
 
 class Compras {
     constructor() {
-        this.arquivo = 'products.json'
-        this.compra = 'compra.json'
+        this.arquivo = './data/products.json'
+        this.compra = './data/compra.json'
     }
 
     async readFileProducts() {
